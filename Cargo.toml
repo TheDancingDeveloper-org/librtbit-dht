@@ -8,8 +8,8 @@ repository = "https://github.com/AusAgentSmith-org/librtbit-dht"
 
 [features]
 default = ["sha1-crypto-hash"]
-sha1-crypto-hash = ["sha1w/sha1-crypto-hash"]
-sha1-ring = ["sha1w/sha1-ring"]
+sha1-crypto-hash = ["sha1w/sha1-crypto-hash", "librtbit-core/sha1-crypto-hash"]
+sha1-ring = ["sha1w/sha1-ring", "librtbit-core/sha1-ring"]
 
 [dependencies]
 tokio = { version = "1", features = ["macros", "rt-multi-thread", "net", "sync"] }
@@ -21,8 +21,8 @@ serde_json = "1"
 buffers = { git = "https://github.com/AusAgentSmith-org/librtbit-buffers.git", tag = "v0.1.0", package = "librtbit-buffers" }
 bencode = { git = "https://github.com/AusAgentSmith-org/librtbit-bencode.git", tag = "v0.1.0", package = "librtbit-bencode" }
 clone_to_owned = { git = "https://github.com/AusAgentSmith-org/librtbit-clone-to-owned.git", tag = "v0.1.0", package = "librtbit-clone-to-owned" }
-librtbit-core = { git = "https://github.com/AusAgentSmith-org/librtbit-core.git", tag = "v0.1.0" }
-sha1w = { git = "https://github.com/AusAgentSmith-org/librtbit-sha1-wrapper.git", tag = "v0.1.0", package = "librtbit-sha1-wrapper" }
+librtbit-core = { git = "https://github.com/AusAgentSmith-org/librtbit-core.git", tag = "v0.1.0", default-features = false }
+sha1w = { git = "https://github.com/AusAgentSmith-org/librtbit-sha1-wrapper.git", tag = "v0.1.0", package = "librtbit-sha1-wrapper", default-features = false }
 anyhow = "1"
 parking_lot = "0.12"
 tracing = "0.1"
