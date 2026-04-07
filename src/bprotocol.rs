@@ -643,8 +643,7 @@ where
                 other => anyhow::bail!("unsupported method {:?}", ByteBuf(other)),
             },
             _ => anyhow::bail!(
-                "cannot deserialize message as request, expected exactly \"a\" and \"q\" to be set. Message: {:?}",
-                de
+                "cannot deserialize message as request, expected exactly \"a\" and \"q\" to be set. Message: {de:?}",
             ),
         },
         MessageType::Response => match (&de.arguments, &de.method_name, &de.response, &de.error) {
@@ -660,8 +659,7 @@ where
                 })
             }
             _ => anyhow::bail!(
-                "cannot deserialize message as response, expected exactly \"r\" to be set. Message: {:?}",
-                de
+                "cannot deserialize message as response, expected exactly \"r\" to be set. Message: {de:?}",
             ),
         },
         MessageType::Error => match (&de.arguments, &de.method_name, &de.response, &de.error) {
@@ -677,8 +675,7 @@ where
                 })
             }
             _ => anyhow::bail!(
-                "cannot deserialize message as error, expected exactly \"e\" to be set. Message: {:?}",
-                de
+                "cannot deserialize message as error, expected exactly \"e\" to be set. Message: {de:?}",
             ),
         },
     }
