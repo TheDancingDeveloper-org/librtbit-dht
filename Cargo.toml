@@ -39,7 +39,7 @@ thiserror = "2"
 aws-lc-rs = "1.12"
 
 [dev-dependencies]
-tracing-subscriber = { version = "0.3", default-features = false }
+tracing-subscriber = { version = "0.3", default-features = false, features = ["fmt"] }
 
 [lints.clippy]
 all = { level = "warn", priority = -1 }
