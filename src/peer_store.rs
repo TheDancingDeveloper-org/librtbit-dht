@@ -1,6 +1,4 @@
-use std::{
-    cmp::Reverse, collections::VecDeque, net::SocketAddr, str::FromStr, sync::atomic::AtomicU32,
-};
+use std::{collections::VecDeque, net::SocketAddr, str::FromStr, sync::atomic::AtomicU32};
 
 use bencode::ByteBufOwned;
 use chrono::{DateTime, TimeDelta, Utc};

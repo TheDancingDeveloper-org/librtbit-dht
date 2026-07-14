@@ -1446,6 +1446,11 @@ impl DhtState {
         self.listen_addr
     }
 
+    /// Ping a node learned from a BEP 5 peer-wire PORT message.
+    pub async fn ping(&self, addr: SocketAddr) -> crate::Result<()> {
+        self.request(Request::Ping, addr).await.map(|_| ())
+    }
+
     pub fn stats(&self) -> DhtStats {
         self.get_stats()
     }

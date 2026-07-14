@@ -18,6 +18,11 @@ pub use crate::dht::{DhtConfig, DhtState, RequestPeersStream};
 pub use librtbit_core::hash_id::Id20;
 pub use persistence::{PersistentDht, PersistentDhtConfig};
 
+/// Parse a bencoded DHT packet. Exposed for parser hardening and fuzzing.
+pub fn deserialize_message(buf: &[u8]) -> anyhow::Result<()> {
+    bprotocol::deserialize_message::<buffers::ByteBuf<'_>>(buf).map(|_| ())
+}
+
 pub type Dht = Arc<DhtState>;
 
 // How long do we wait for a response from a DHT node.
