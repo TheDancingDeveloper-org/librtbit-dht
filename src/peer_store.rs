@@ -264,7 +264,7 @@ impl PeerStore {
 
             // Enforce per-info_hash cap: keep only the most recent peers.
             if peers.len() > Self::MAX_PEERS_PER_INFO_HASH {
-                peers.sort_by(|a, b| b.time.cmp(&a.time));
+                peers.sort_by_key(|b| std::cmp::Reverse(b.time));
                 peers.truncate(Self::MAX_PEERS_PER_INFO_HASH);
             }
 
@@ -312,7 +312,7 @@ impl PeerStore {
                 }
                 if let Some(mut entry) = self.peers.get_mut(&hash) {
                     let peers = entry.value_mut();
-                    peers.sort_by(|a, b| a.time.cmp(&b.time));
+                    peers.sort_by_key(|a| a.time);
                     while !peers.is_empty() && evicted < to_evict {
                         peers.remove(0);
                         evicted += 1;
